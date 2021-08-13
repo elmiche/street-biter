@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!-- leaflet map  -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin=""/>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+<!-- profile sec  -->
+<div class="container profile">
+  <div class="row">
+    <div class="content-section">
+        <div class="media">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-xs-8">
+            <img src="{{ user.profile.image.url }}" class="img-responsive fit-image rounded-circle account-img">
+          </div>
+          <div class="media-body">
+              <h2 class="account-heading"> {{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+            <p class="user-date">Joined Street Biter: <br> {{ user.date_joined }}</p>
+            <p class="user-lastlog"> Last login: <br> {{ user.last_login }}</p>
+            <p class="text-third"> You have discovered <b>{{ sweetspots.count }}</b> Sweet Spots</p>
+
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <!-- map -->
+    <div class="sweetspot-content">
+      <div class="row">
+      <div class="col-sm-12">
+          <div class="map-sweetstuff">
+              <div id="sweetspotsid">map</div>
+              </div>
+          </div>
+      </div>
+      </div>
+
+
+      {% for sweetspot in sweetspots %}
+
+      <!-- map markers  -->
+      <div class="mysweetcoords" 
+          data-latitude="{{ sweetspot.latitude }}" 
+          data-longitude="{{ sweetspot.longitude }}"
+          data-species="{{ sweetspot.species }}"
+          data-sweetspotid="{{ sweetspot.id }}"
+          data-user="{{ sweetspot.user}}">
+      </div> 
+      {% endfor %}
+      
+
+
+<!-- DB markers -->
+
+
+<div class="sweetspot-content">
+
+      <div class="map-sweetstuff">
+          <div id="sweetspotsid">
+          </div>
+          </div>
+      </div>
+  
+
+
+
+
+    <!-- map markers  -->
+<!-- {% for sweetspot in sweetspots %}     
+
+
+  <div class="mysweetcoords" data-latitude="{{ sweetspot.latitude }}" data-longitude="{{ sweetspot.longitude }}"> 
+  </div> 
+
+{% endfor %} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- JS code  -->
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+crossorigin=""></script>
+
+<script src="{% static 'js/sweetspots.js' %}"></script>
+
+
+
+{% endblock content %}

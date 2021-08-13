@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin=""/>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+<div class="sweet-txtbox">
+    <div class="sweet-text">
+    <h4>My Sweet Spots</h4>
+    <p>All the places you love on one page</p>
+</div>
+</div>
+
+<div class="container sweetspot-content">
+    <div class="row">
+    <div class="col-sm-12 sweet-map">
+            <div id="sweetspotsid"></div>
+            
+        </div>
+    </div>
+    
+        
+{% for sweetspot in sweetspots %}
+
+<!-- map markers  -->
+<div class="mysweetcoords" 
+    data-latitude="{{ sweetspot.latitude }}" 
+    data-longitude="{{ sweetspot.longitude }}"
+    data-species="{{ sweetspot.species }}"
+    data-sweetspotid="{{ sweetspot.id }}"
+    data-user="{{ sweetspot.user}}">
+</div> 
+{% endfor %}
+
+
+
+&nbsp;
+
+
+
+{% for sweetspot in sweetspots %}
+
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User</th>
+                <th scope="col">Location</th>
+                <th scope="col">Species</th>
+                <th scope="col">  </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{ sweetspot.id }}</th>
+                <td>{{ sweetspot.user }}</td>
+                <td>{{ sweetspot.latitude }} {{ sweetspot.longitude }}</td>
+                <td>{{ sweetspot.species }}</td>
+                <td><a href="">Remove</a> </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+  
+{% endfor %}
+
+</div>
+            
+
+
+
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+crossorigin=""></script>
+
+<script src="{% static 'js/sweetspots.js' %}"></script>
+{% endblock %}

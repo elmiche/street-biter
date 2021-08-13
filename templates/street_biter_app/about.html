@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container aboutpage">
+  <div class="row">
+    <div class="col-xl-12 col-lg-10 col-md-8 col-sm-6 col-xs-4 aboutpage">
+        <h3>Welcome to Street Biter!</h3>
+        
+        <p> A site where users can share foraging locations for delicious, sweet, edible and medicinal plants. <br>
+        This is a resource map, made to bring foragers together and create a community around Portland's natural abundance of edible plants.<br></p> 
+
+        &nbsp;
+        <div class="card mb-3">
+            <img src="/static/street_biter_app/images/Learning-Outdoors.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h3 class="card-title">Education</h3>
+              <p class="card-text">Street Biter wants to encourage the community to educate eachother on topics such as species identification, native v.s. introduced species, and sustainable practices. <br>
+                Each location provides useful information for foragers and scientists alike.<br>
+                Species lists will continue to be updated and educational resources provided on each species.</p>
+            </div>
+        </div>
+
+        &nbsp;
+        <div class="card mb-3">
+            <img src="/static/street_biter_app/images/plant-eat.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h3 class="card-title">Plants - To Eat or Not to Eat?</h3>
+              <p class="card-text">Street Biter cautions the consumtion of any plants or unidentified species. You must proceed at your own discretion. Each location provides useful information for foragers and scientists alike. Use this information to make your best judgement. 
+                Species lists will continue to be updated and educational resources provided on each species, including information on edible, less favorable, <br> 
+                and toxic plants to avoid for both humans and pets such as cats and dogs.</p>
+            </div>
+        </div>
+
+        &nbsp;
+        <div class="card mb-3">
+            <img src="/static/street_biter_app/images/laptop-phoneplant.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h3 class="card-title">Mobile Friendly</h3>
+              <p class="card-text">Street Biter uses the Leaflet API to provide mobile-friendly maps and functionalities compatible with most mobile devices.
+                Use Street Biter on your phone, tablet, laptop, or desktop whereever you find most convenient for plotting your favorite foraging spots to share with the community at large!</p>
+            </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+{% csrf_token %}
+   
+
+
+{% endblock %}
